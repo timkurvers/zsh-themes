@@ -1,5 +1,7 @@
 # My zsh themes
 
-## Installation
+## Usage
 
-Coming soon™
+Configure your theme through [Antigen](https://github.com/zsh-users/antigen):
+
+    antigen theme timkurvers/zsh-themes moonsphere
