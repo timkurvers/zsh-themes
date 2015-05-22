@@ -2,7 +2,7 @@
 # Author: Tim Kurvers <tim@moonsphere.net>
 
 function collapse_pwd {
-    echo $(pwd | sed -e "s,^$HOME,~,")
+  echo $(pwd | perl -pe "s|^$HOME|~|g; s|/([^/])[^/]*(?=(?:/.+/))|/\$1|g")
 }
 
 function git_info {
