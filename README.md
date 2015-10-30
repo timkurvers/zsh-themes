@@ -2,9 +2,11 @@
 
 ## Moonsphere
 
-Configure your theme through [Antigen](https://github.com/zsh-users/antigen):
+Configure your theme through [Antigen]:
 
-    antigen theme timkurvers/zsh-themes moonsphere
+```shell
+antigen theme timkurvers/zsh-themes moonsphere
+```
 
 ### Features
 
@@ -13,3 +15,5 @@ Configure your theme through [Antigen](https://github.com/zsh-users/antigen):
 - Python virtual environments
 
 ![Moonsphere theme](http://office.moonsphere.net/moonsphere-theme.png)
+
+[Antigen]: https://github.com/zsh-users/antigen
