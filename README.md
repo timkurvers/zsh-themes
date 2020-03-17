@@ -1,4 +1,6 @@
-# Zsh themes
+# My zsh themes
+
+[![MIT License](https://badgen.net/github/license/timkurvers/zsh-themes)](LICENSE.md)
 
 ## Moonsphere
 
