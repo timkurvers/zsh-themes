@@ -6,23 +6,42 @@ function collapse_pwd {
 }
 
 function git_info {
-  ref=$(git symbolic-ref HEAD --short 2> /dev/null) || return
+  git rev-parse --is-inside-work-tree > /dev/null 2>&1 || return
 
-  local git_dirty="⚡︎"
-  local git_clean="☁ "
-  local git_ahead="⤴"
+  local git_ref
+  git_ref=$(git symbolic-ref HEAD --short 2> /dev/null || git rev-parse --short HEAD)
 
-  if $(echo "$(git status 2> /dev/null)" | grep '^Your branch is ahead' &> /dev/null); then
-    ahead=$git_ahead' '
-  else
-    ahead=''
+  local git_status
+  git_status=$(git status 2> /dev/null)
+
+  local symbol_dirty="⚡︎"
+  local symbol_clean="★ "
+  local symbol_ahead="⤴ "
+  local symbol_behind=" ⤶"
+
+  local suffix=''
+  if [[ $git_status == *"Your branch is ahead"* ]]; then
+    suffix=$symbol_ahead
   fi
+  if [[ $git_status == *"Your branch is behind"* ]]; then
+    suffix=$symbol_behind
+  fi
+  if [[ $git_status == *"have diverged"* ]]; then
+    suffix="%{$fg_bold[red]%} diverged%{$reset_color%}"
+  fi
+  if [[ $git_status == *"HEAD detached"* ]]; then
+    suffix="%{$fg_bold[red]%} detached%{$reset_color%}"
+  fi
+
+  local symbol=$symbol_clean
+  local color="cyan"
 
   if [[ -n $(git status -s 2> /dev/null) ]]; then
-    echo "%{$fg_bold[yellow]%}$git_dirty${ref}$ahead %{$reset_color%}"
-  else
-    echo "%{$fg_bold[cyan]%}$git_clean${ref}$ahead %{$reset_color%}"
+    symbol=$symbol_dirty
+    color="yellow"
   fi
+
+  echo "%{$fg_bold[$color]%}$symbol$git_ref$suffix %{$reset_color%}"
 }
 
 function virtualenv_name {
