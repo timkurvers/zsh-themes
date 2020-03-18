@@ -44,18 +44,31 @@ function git_info {
   echo "%{$fg_bold[$color]%}$symbol$git_ref$suffix %{$reset_color%}"
 }
 
-function virtualenv_name {
-  if [ $VIRTUAL_ENV ]; then
-    local name=`basename $VIRTUAL_ENV`
-    if [[ $name == '.virtualenv' ]]; then
-      echo `basename $VIRTUAL_ENV:h`
-    else
-      echo $name
+function node_info {
+  local version=$(cat .node-version 2> /dev/null) || return
+  if [ $version ]; then
+    echo "  node $version"
+  fi
+}
+
+function python_info {
+  local version=$(cat .python-version 2> /dev/null) || return
+  if [ $version ]; then
+    echo -n "  python $version"
+    if [ $VIRTUAL_ENV ]; then
+      echo " + virtualenv"
     fi
   fi
 }
 
+function ruby_info {
+  local version=$(cat .ruby-version 2> /dev/null) || return
+  if [ $version ]; then
+    echo "  ruby $version"
+  fi
+}
+
 PROMPT='%{$reset_color%}$(git_info)%{$fg_bold[green]%}$(collapse_pwd) %{$fg_bold[black]%}∴ %{$reset_color%}'
-RPROMPT='%{$fg_bold[black]%}$(virtualenv_name)%{$reset_color%}'
+RPROMPT='%{$fg_bold[black]%}$(node_info)$(python_info)$(ruby_info)%{$reset_color%}'
 
 VIRTUAL_ENV_DISABLE_PROMPT=1
