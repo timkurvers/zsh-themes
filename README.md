@@ -4,7 +4,11 @@
 
 ## Moonsphere
 
-Configure your theme through [Antigen]:
+![Moonsphere zsh theme](https://user-images.githubusercontent.com/378235/77068658-3d001980-69e7-11ea-82a1-3e6577be47f1.png)
+
+### Usage
+
+Select this theme through [Antigen]:
 
 ```shell
 antigen theme timkurvers/zsh-themes moonsphere
@@ -21,7 +25,5 @@ antigen theme timkurvers/zsh-themes moonsphere
   - Uses `ndenv`, `pyenv` and `rbenv`
 
 - Path collapsing to save screen space
-
-![Moonsphere zsh theme](https://user-images.githubusercontent.com/378235/77068658-3d001980-69e7-11ea-82a1-3e6577be47f1.png)
 
 [Antigen]: https://github.com/zsh-users/antigen
