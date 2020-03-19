@@ -22,6 +22,6 @@ antigen theme timkurvers/zsh-themes moonsphere
 
 - Path collapsing to save screen space
 
-![Moonsphere theme](https://user-images.githubusercontent.com/378235/27263677-c1ec45b0-546e-11e7-8821-a53d70286925.png)
+![Moonsphere zsh theme](https://user-images.githubusercontent.com/378235/77068658-3d001980-69e7-11ea-82a1-3e6577be47f1.png)
 
 [Antigen]: https://github.com/zsh-users/antigen
